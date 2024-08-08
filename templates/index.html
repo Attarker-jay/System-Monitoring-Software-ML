@@ -1,0 +1,373 @@
+<html>
+  <head>
+    <title>Network Anomaly Detection Using Machine Learning</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='stylesPredict.css') }}"
+    />
+  </head>
+  <body style="background: #000">
+    <div class="login">
+      <!---NAD form section-->
+      <h1 style="color: Violet; font-size: 40px; text-align: center">
+        Network Anomaly Detection
+      </h1>
+
+      <form
+        style="
+          background-color: #7bcbdf;
+          padding: 20px;
+          border-radius: 5px;
+          max-width: 600px;
+          margin: auto;
+        "
+        action="{{url_for('NAD_predict')}}"
+        method="post"
+      >
+        <input
+          type="number"
+          name="duration"
+          placeholder="duration"
+          required="required"
+        />
+        <input
+          type="text"
+          name="protocol_type"
+          placeholder="protocol_type"
+          required="required"
+        />
+        <input type="text" name="flag" placeholder="flag" required="required" />
+        <input
+          type="number"
+          name="src_bytes"
+          placeholder="src_bytes"
+          required="required"
+        /><input
+          type="number"
+          name="dst_bytes"
+          placeholder="dst_bytes"
+          required="required"
+        />
+        <input
+          type="number"
+          name="land"
+          placeholder="land"
+          value="0"
+          required="required"
+        /><input
+          type="number"
+          name="wrong_fragment"
+          placeholder="wrong_fragment"
+          value="0"
+          required="required"
+        />
+        <input
+          type="number"
+          name="urgent"
+          placeholder="urgent"
+          value="0"
+          required="required"
+        /><input
+          type="number"
+          name="hot"
+          placeholder="hot"
+          required="required"
+          value="0"
+        />
+        <input
+          type="number"
+          name="num_failed_logins"
+          placeholder="num_failed_logins"
+          value="0"
+          required="required"
+        /><input
+          type="number"
+          name="logged_in"
+          placeholder="logged_in"
+          required="required"
+        />
+        <input
+          type="number"
+          name="num_compromised"
+          placeholder="num_compromised"
+          required="required"
+        /><input
+          type="number"
+          name="root_shell"
+          placeholder="root_shell"
+          required="required"
+          value="0"
+        />
+        <input
+          type="number"
+          name="su_attempted"
+          placeholder="su_attempted"
+          value="0"
+          required="required"
+        /><input
+          type="number"
+          name="num_root"
+          placeholder="num_root"
+          required="required"
+          value="0"
+        />
+        <input
+          type="number"
+          name="num_file_creations"
+          placeholder="num_file_creations"
+          value="0"
+          required="required"
+        /><input
+          type="number"
+          name="num_shells"
+          placeholder="num_shells"
+          required="required"
+          value="0"
+        />
+        <input
+          type="number"
+          name="num_access_files"
+          placeholder="num_access_files"
+          value="0"
+          required="required"
+        /><input
+          type="number"
+          name="num_outbound_cmds"
+          placeholder="num_outbound_cmds"
+          required="required"
+          value="0"
+        />
+        <input
+          type="number"
+          name="is_host_login"
+          placeholder="is_host_login"
+          value="0"
+          required="required"
+        /><input
+          type="number"
+          name="count"
+          placeholder="count"
+          required="required"
+          value="0"
+        />
+        <input
+          type="number"
+          name="srv_count"
+          placeholder="srv_count"
+          required="required"
+        /><input
+          type="number"
+          name="serror_rate"
+          placeholder="serror_rate"
+          required="required"
+        />
+        <input
+          type="number"
+          name="srv_serror_rate"
+          placeholder="srv_serror_rate"
+          value="0"
+          required="required"
+        /><input
+          type="number"
+          name="rerror_rate"
+          placeholder="rerror_rate"
+          required="required"
+          value="0"
+        />
+        <input
+          type="number"
+          name="srv_rerror_rate"
+          placeholder="srv_rerror_rate"
+          required="required"
+        /><input
+          type="number"
+          name="same_srv_rate"
+          placeholder="same_srv_rate"
+          required="required"
+        />
+        <input
+          type="number"
+          name="diff_srv_rate"
+          placeholder="diff_srv_rate"
+          required="required"
+        /><input
+          type="number"
+          name="srv_diff_host_rate"
+          placeholder="srv_diff_host_rate"
+          required="required"
+        />
+        <input
+          type="number"
+          name="dst_host_count"
+          placeholder="dst_host_count"
+          required="required"
+        /><input
+          type="number"
+          name="dst_host_srv_count"
+          placeholder="dst_host_srv_count"
+          required="required"
+        />
+        <input
+          type="number"
+          name="dst_host_same_srv_rate"
+          placeholder="dst_host_same_srv_rate"
+          two
+          required="required"
+        /><input
+          type="number"
+          name="dst_host_diff_srv_rate"
+          placeholder="dst_host_diff_srv_rate"
+          required="required"
+        />
+        <input
+          type="number"
+          name="dst_host_same_src_port_rate"
+          placeholder="dst_host_same_src_port_rate"
+          two
+          required="required"
+        /><input
+          type="number"
+          name="dst_host_srv_diff_host_rate"
+          placeholder="dst_host_srv_diff_host_rate"
+          required="required"
+        />
+        <input
+          type="number"
+          name="dst_host_serror_rate"
+          placeholder="dst_host_serror_rate"
+          two
+          required="required"
+        /><input
+          type="number"
+          name="dst_host_srv_serror_rate"
+          placeholder="dst_host_srv_serror_rate"
+          required="required"
+        />
+        <input
+          type="number"
+          name="dst_host_rerror_rate"
+          placeholder="dst_host_rerror_rate"
+          required="required"
+        /><input
+          type="number"
+          name="dst_host_srv_rerror_rate"
+          placeholder="dst_host_srv_rerror_rate"
+          required="required"
+        />
+        <input
+          type="number"
+          name="src_ui"
+          placeholder="src_ui"
+          value="0"
+          required="required"
+        />
+        <br />
+        <br />
+
+        <p style="text-align: center">
+          <button
+            type="submit"
+            style="
+              background-color: #4caf50;
+              color: white;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+            "
+          >
+            Check For Network Anomalous Activities
+          </button>
+        </p>
+      </form>
+      <h4 style="font-size: 30px">
+        {% if NAD_prediction_text %}
+        <p class="{{ prediction_class }}">{{ NAD_prediction_text }}</p>
+        {% endif %}
+      </h4>
+
+      <!---ITD form section-->
+      <h1 style="color: Violet; font-size: 40px; text-align: center">
+        Insider Threat Detection
+      </h1>
+      <form
+        style="
+          background-color: #7bcbdf;
+          padding: 20px;
+          border-radius: 5px;
+          max-width: 600px;
+          margin: auto;
+        "
+        action="{{url_for('ITD_predict')}}"
+        method="post"
+      >
+        <input
+          type="text"
+          name="user logged in during
+          normal hours"
+          placeholder="user logged in during
+          normal hours"
+          required="required"
+        />
+        <input
+          type="text"
+          name="insider"
+          placeholder="user has connected a devis during
+          normal hours"
+          required="required"
+        />
+        <input
+          type="text"
+          name="insider"
+          placeholder="recording whether an email has been sent
+          externally"
+          required="required"
+        />
+        <input
+          type="text"
+          name="insider"
+          placeholder="recording the file extension of the file
+          used"
+          required="required"
+        />
+        <input
+          type="text"
+          name="insider"
+          placeholder="Encodes the URL visited"
+          required="required"
+        />
+
+        <p style="text-align: center">
+          <button
+            type="submit"
+            style="
+              background-color: #4caf50;
+              color: white;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+            "
+          >
+            Check For Insider Threat Activities
+          </button>
+        </p>
+      </form>
+      <h4 style="font-size: 30px">
+        {% if ITD_prediction_text %}
+        <p class="{{ prediction_class }}">{{ ITD_prediction_text }}</p>
+        {% endif %}
+      </h4>
+    </div>
+  </body>
+</html>

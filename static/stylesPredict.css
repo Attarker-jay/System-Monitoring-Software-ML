@@ -1,0 +1,9 @@
+.no-threat {
+  background: #d4edda;
+  color: #155724;
+}
+
+.threat {
+  background: #f8d7da;
+  color: #721c24;
+}
